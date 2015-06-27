@@ -3,5 +3,43 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+	<display-name>Archetype Created Web Application</display-name>
+
+
+	<!-- In Spring Web Applications, there are two types of container, each 
+		of which is configured and initialized differently. One is the "Application 
+		Context" and the other is the "Web Application Context". Application Context 
+		is the container initialized by a ContextLoaderListener or ContextLoaderServlet 
+		defined in the web.xml and the configuration would look something like this: -->
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/rootApplication-servlet.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+
+	<!-- The other context is the "WebApplicationContext" which is the child 
+		context of the application context. Each DispatcherServlet defined in a Spring 
+		web application will have an associated WebApplicationContext. -->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/spring/servletContext-servlet.xml</param-value>
+      </init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
 </web-app>
