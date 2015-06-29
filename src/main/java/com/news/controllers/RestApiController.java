@@ -3,6 +3,7 @@ package com.news.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,6 +22,13 @@ public class RestApiController {
 	public @ResponseBody List<UserLogin> getAllUSerUsingREST()
 	{
 		return loginService.getAllUSerLoginInformation();
+		
+	}
+	
+	@RequestMapping(value="/rest/user/{name}", method=RequestMethod.GET , produces = "application/json")	
+	public @ResponseBody UserLogin getUserByName(@PathVariable("name") String username )
+	{
+		return loginService.getUser(username);
 		
 	}
 }

@@ -18,4 +18,9 @@ public class LoginService {
 	{
 		return loginDAO.getAllUSer();
 	}
+
+	public UserLogin getUser(String username) {
+		
+		return loginDAO.getAllUSerByName(username);
+	}
 }
