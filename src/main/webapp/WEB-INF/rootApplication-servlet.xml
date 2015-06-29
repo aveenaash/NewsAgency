@@ -16,6 +16,7 @@
 	
 
 
+
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -28,6 +29,11 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
+		<!-- <property name="annotatedClasses">
+			<list>
+				<value>com.news.entities.UserLogin</value>
+			</list>
+		</property> -->
 		<property name="packagesToScan" value="com.news.entities" />
 		<property name="hibernateProperties">
 			<props>

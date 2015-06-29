@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.news.entities.UserLogin;
 
@@ -27,13 +28,15 @@ public class LoginDAO {
 
 
 	@SuppressWarnings("unchecked")
+	@Transactional(readOnly=false)
 	public List<UserLogin> getAllUSer()
 	{
-		List<UserLogin> users = new ArrayList<UserLogin>();
+		List<UserLogin> usersss = new ArrayList<UserLogin>();
 		 
-		users = sessionFactory.getCurrentSession()
-			.createQuery("from User")
-			.list();		
-		return users;
+		usersss = sessionFactory.getCurrentSession()
+				.createSQLQuery("select * from userlogin")
+				.addEntity(UserLogin.class)
+				.list();		
+		return usersss;
 	}
 }
