@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.news.entities.AgencyProfile;
+import com.news.entities.SubscriberProfile;
 
 @Repository
 public class SignupDAO {
@@ -30,6 +31,12 @@ public class SignupDAO {
 		session.persist(agencyProfile);
 	}
 	
+	@Transactional(readOnly=false)
+	public void saveSubscriberProfile(SubscriberProfile subscriberProfile)
+	{
+		Session session=sessionFactory.getCurrentSession();
+		session.persist(subscriberProfile);
+	}
 	
 	
 }

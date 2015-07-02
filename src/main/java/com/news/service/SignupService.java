@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.news.dao.SignupDAO;
 import com.news.entities.AgencyProfile;
+import com.news.entities.SubscriberProfile;
 
 @Service
 public class SignupService {
@@ -24,5 +25,11 @@ public class SignupService {
 	{
 		agencyProfile.getUserlogin().setLogintype("Agency");
 		signupDAO.saveAgencyProfile(agencyProfile);
+	}
+	
+	public void saveSubscriberProfile(SubscriberProfile subscriberProfile)
+	{
+		subscriberProfile.getUserlogin().setLogintype("Subscriber");
+		signupDAO.saveSubscriberProfile(subscriberProfile);
 	}
 }
