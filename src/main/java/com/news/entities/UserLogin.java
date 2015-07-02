@@ -45,6 +45,6 @@ public class UserLogin {
 	public void setLogintype(String logintype) {
 		this.logintype = logintype;
 	}
-	
+
 	
 }

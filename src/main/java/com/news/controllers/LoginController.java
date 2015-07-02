@@ -10,11 +10,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.news.entities.UserLogin;
 
 @Controller
-public class HomeController {
+public class LoginController {
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String getHome() {
-		return "home";
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String getHome(@ModelAttribute("userlogin") UserLogin userlogin, Model model) {
+		return "login";
 	}
 
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(@ModelAttribute("userlogin") UserLogin userlogin,
+			BindingResult bindingResult) {
+		return "home";
+	}
 }
